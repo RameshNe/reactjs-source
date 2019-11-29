@@ -1,5 +1,4 @@
 import React, {Component} from 'react';
-// import logo from './logo.svg';
 import logo from './hinjewadi.jpg';
 import './App.css';
 import Select from 'react-select';
@@ -66,11 +65,6 @@ class App extends Component {
       return loc;
     }); 
     console.log("Loc: ", loc);
-    // for(let[key, value] of Object.entries(locations)) {
-    //   loc[`${key}`] = `${value}`;
-    //   //console.log(`${key}: ${value}`);
-    // }
-    // console.log("Loc: ",loc);
 
     if(isLoading) {
       return <p>Loading...</p>;
@@ -88,11 +82,6 @@ class App extends Component {
               <div className="col-md-4"></div>
                 <div className="col-md-4">
                   <h3>Location List</h3>            
-                    {/* <Select options={location.map((loc, i) => {
-                          return <option key={i} value={loc}>{loc}</option>
-                        })
-                      }
-                    /> */}
                     <Select options={Object.entries(loc)}/>
                     <Select options={Object.keys(loc.map((l, i) => {
                           return <option key={i} value={l}>{l}</option>
