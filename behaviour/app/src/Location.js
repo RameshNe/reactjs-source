@@ -3,29 +3,33 @@ import "./App.css";
 import "bootstrap/dist/css/bootstrap.css";
 
 class Location extends Component {
-  state = {
-    locationValue: "Location"
-  };
   constructor(props) {
     super(props);
-    this.setState({
+    this.state = {
       isLoading: this.props.isLoading,
       locations: this.props.locations,
-      hotels: this.props.hotels
-    });
+      locationValue: this.props.locationValue
+    };
   }
   handleChange(event) {
-    console.log("Location Event reached", event.target.value);
     this.setState({ locationValue: event.target.value });
   }
+
+  async loadLocations() {
+    const response = await fetch("/api/locations");
+    const body = await response.json();
+    this.setState({ locations: body, isLoading: true });
+  }
+
   render() {
     return (
       <div>
         <select
           onChange={this.handleChange.bind(this)}
           style={{ width: `220px` }}
+          onFocus={() => this.loadLocations()}
         >
-          {Object.entries(this.props.locations).map(location => {
+          {Object.entries(this.state.locations).map(location => {
             return (
               <option key={location} value={JSON.stringify(location)}>
                 {JSON.stringify(location)}
