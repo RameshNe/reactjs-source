@@ -1,35 +1,35 @@
 import React, { Component } from "react";
 import "./App.css";
 import "bootstrap/dist/css/bootstrap.css";
+import list from "./json/finalList.json";
 
 class FinalObject extends Component {
-  state = {
-    finalList: []
-  };
   constructor(props) {
     super(props);
-    this.setState({
-      isLoading: this.props.isLoading,
-      hotels: this.props.hotels,
+    this.state = {
       locationValue: this.props.locationValue,
-      hotelValue: this.props.hotelValue
-    });
+      hotelValue: this.props.hotelValue,
+      finalList: []
+    };
   }
-  UNSAFE_componentDidUpdate() {
-    console.log("Location Selected Value", this.state.locationValue);
-    console.log("Hotel Selected Value", this.state.hotelValue);
+  computeFinalList() {
+    this.setState({ finalList: list });
   }
   render() {
     return (
-      <select style={{ width: `300px` }}>
-        {Object.entries(this.props.hotels).map(hotel => {
-          return (
-            <option key={hotel} value={hotel}>
-              {JSON.stringify(hotel)}
-            </option>
-          );
-        })}
-      </select>
+      <div>
+        <div>
+          <select style={{ width: `300px` }}>
+            {Object.entries(this.state.finalList).map(final => {
+              return (
+                <option key={final} value={final}>
+                  {JSON.stringify(final)}
+                </option>
+              );
+            })}
+          </select>
+        </div>
+      </div>
     );
   }
 }
