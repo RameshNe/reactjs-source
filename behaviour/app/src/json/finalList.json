@@ -1,0 +1,17 @@
+{
+  "0": {
+    "x": 5,
+    "y": 9,
+    "hotels": [
+      "Sagar",
+      "Mreidian",
+      "Oyo rooms",
+      "shiv sagar",
+      "cozy nest",
+      "radison blue"
+    ]
+  },
+  "1": { "x": 3, "y": 6, "hotels": ["Hill Top", "Ibis"] },
+  "2": { "x": 4, "y": 5, "hotels": ["kaveri"] },
+  "3": { "x": 7, "y": 7, "hotels": ["sonar bangla"] }
+}
